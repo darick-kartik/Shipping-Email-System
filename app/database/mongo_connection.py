@@ -1,10 +1,28 @@
 from pymongo import MongoClient
 
+from dotenv import load_dotenv
 
-client = MongoClient(
-    "mongodb://localhost:27017/"
+import os
+
+
+load_dotenv()
+
+
+MONGO_URI = os.getenv(
+    "MONGO_URI"
 )
 
-db = client["shipping_email_db"]
 
-emails_collection = db["emails"]
+client = MongoClient(
+    MONGO_URI
+)
+
+
+db = client[
+    "shipping_email_db"
+]
+
+
+emails_collection = db[
+    "emails"
+]
